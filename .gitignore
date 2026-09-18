@@ -1,0 +1,16 @@
+# Node dependencies and build output
+**/node_modules/
+**/dist/
+
+# .NET build output
+**/bin/
+**/obj/
+
+# Local environment files
+**/.env.local
+**/.env.*.local
+
+# User-specific IDE files
+.vs/
+*.user
+*.suo
