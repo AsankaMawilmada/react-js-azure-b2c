@@ -13,11 +13,14 @@ public sealed class ProfileController : ControllerBase
 {
     [HttpGet]
     [RequiredScope("access_as_user")]
-    public IActionResult Get() => Ok(new
-    {
-        message = "This endpoint is protected by Azure B2C.",
-        name = User.Identity?.Name,
-        subject = User.FindFirst("sub")?.Value,
-        scopes = User.FindAll("scp").Select(claim => claim.Value).ToArray()
-    });
+    public IActionResult Get() =>
+        Ok(
+            new
+            {
+                message = "This endpoint is protected by Azure B2C.",
+                name = User.Identity?.Name,
+                subject = User.FindFirst("sub")?.Value,
+                scopes = User.FindAll("scp").Select(claim => claim.Value).ToArray(),
+            }
+        );
 }

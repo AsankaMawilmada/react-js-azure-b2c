@@ -9,9 +9,6 @@ public sealed class PublicController : ControllerBase
 {
     [HttpGet]
     [AllowAnonymous]
-    public IActionResult Get() => Ok(new
-    {
-        message = "This endpoint is public.",
-        serverTime = DateTimeOffset.UtcNow
-    });
+    public IActionResult Get() =>
+        Ok(new { message = "This endpoint is public.", serverTime = DateTimeOffset.UtcNow });
 }

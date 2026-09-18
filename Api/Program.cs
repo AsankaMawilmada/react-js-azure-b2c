@@ -2,17 +2,17 @@ namespace Api;
 
 public static class Program
 {
-	public static async Task Main(string[] args)
-	{
-		var builder = WebApplication.CreateBuilder(args);
-		var startup = new Startup(builder.Configuration);
+    public static async Task Main(string[] args)
+    {
+        var builder = WebApplication.CreateBuilder(args);
+        var startup = new Startup(builder.Configuration);
 
-		startup.ConfigureServices(builder.Services);
+        startup.ConfigureServices(builder.Services);
 
-		var app = builder.Build();
+        var app = builder.Build();
 
-		startup.Configure(app);
+        startup.Configure(app);
 
-		await app.RunAsync();
-	}
+        await app.RunAsync();
+    }
 }

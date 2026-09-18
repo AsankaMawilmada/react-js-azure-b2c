@@ -4,7 +4,19 @@ This solution demonstrates two independent authorization boundaries:
 
 - `Api/Controllers/PublicController.cs` is anonymous.
 - `Api/Controllers/ProfileController.cs` requires a JWT and the `access_as_user` delegated scope.
-- `frontend/src/App.jsx` renders public data for everyone and calls the protected API only after MSAL sign-in.
+- `frontend/src/App.tsx` renders public and protected routes and calls the API through MSAL-acquired tokens.
+
+## Frontend routes
+
+The Vite React client uses `react-router-dom` with route guards:
+
+- `/` and `/about` are public pages.
+- `/dashboard` is protected by `RequireAuth`; anonymous visitors see a `Login / Sign up` button that starts the Azure B2C redirect flow.
+- `/admin` is protected by `RequireAuth` and `RequireRole`; the signed-in account must contain `Admin` in its `roles` claim.
+
+The route guard improves navigation and user experience, but it is not a security boundary. Enforce authorization again in API controllers using `[Authorize]`, scopes, and roles.
+
+To use the admin route, define an `Admin` app role on the SPA app registration and assign it to the intended users or groups. The role must be emitted in the ID token for the client-side route guard. If the role protects API data, also enforce it on the API endpoint.
 
 ## Create the app registrations
 

@@ -1,11 +1,12 @@
-import { LogLevel } from '@azure/msal-browser'
+import { LogLevel, type Configuration } from '@azure/msal-browser'
 
 const tenantName = import.meta.env.VITE_B2C_TENANT_NAME
 const tenantDomain = import.meta.env.VITE_B2C_TENANT_DOMAIN
 const policy = import.meta.env.VITE_B2C_SIGNUP_SIGNIN_POLICY
-const authority = tenantName && policy
-  ? `https://${tenantName}.b2clogin.com/${tenantDomain}/${policy}`
-  : 'https://login.microsoftonline.com/common'
+const authority =
+  tenantName && policy
+    ? `https://${tenantName}.b2clogin.com/${tenantDomain}/${policy}`
+    : 'https://login.microsoftonline.com/common'
 
 export const apiScope = import.meta.env.VITE_API_SCOPE || ''
 
@@ -15,16 +16,19 @@ export const authConfig = {
   knownAuthorities: tenantName ? [`${tenantName}.b2clogin.com`] : [],
   redirectUri: window.location.origin,
   postLogoutRedirectUri: window.location.origin,
-  isConfigured: Boolean(
-    tenantName && tenantDomain && policy && import.meta.env.VITE_B2C_CLIENT_ID,
-  ),
+  isConfigured: Boolean(tenantName && tenantDomain && policy && import.meta.env.VITE_B2C_CLIENT_ID),
 }
 
-export const msalConfig = {
-  auth: authConfig,
+export const msalConfig: Configuration = {
+  auth: {
+    clientId: authConfig.clientId,
+    authority: authConfig.authority,
+    knownAuthorities: authConfig.knownAuthorities,
+    redirectUri: authConfig.redirectUri,
+    postLogoutRedirectUri: authConfig.postLogoutRedirectUri,
+  },
   cache: {
     cacheLocation: 'sessionStorage',
-    storeAuthStateInCookie: false,
   },
   system: {
     loggerOptions: {

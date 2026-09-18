@@ -6,18 +6,23 @@ public static class ApiExtensions
 {
     public static IServiceCollection AddApiServices(
         this IServiceCollection services,
-        IConfiguration configuration)
+        IConfiguration configuration
+    )
     {
         services.AddMicrosoftIdentityWebApiAuthentication(configuration, "AzureAdB2C");
         services.AddAuthorization();
         services.AddCors(options =>
         {
-            options.AddPolicy("frontend", policy =>
-            {
-                policy.WithOrigins(configuration.GetSection("Cors:Origins").Get<string[]>() ?? [])
-                    .AllowAnyHeader()
-                    .AllowAnyMethod();
-            });
+            options.AddPolicy(
+                "frontend",
+                policy =>
+                {
+                    policy
+                        .WithOrigins(configuration.GetSection("Cors:Origins").Get<string[]>() ?? [])
+                        .AllowAnyHeader()
+                        .AllowAnyMethod();
+                }
+            );
         });
         services.AddControllers();
         services.AddOpenApi();

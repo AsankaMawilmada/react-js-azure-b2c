@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "scripts": {
+    "prepare": "husky",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "format:dotnet": "dotnet csharpier format Api",
+    "format:dotnet:check": "dotnet csharpier check Api",
+    "lint:frontend": "npm --prefix frontend run lint"
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx,json,css,md,yml,yaml}": [
+      "prettier --write"
+    ],
+    "*.cs": [
+      "dotnet csharpier format"
+    ]
+  },
+  "devDependencies": {
+    "husky": "^9.1.7",
+    "lint-staged": "^17.5.1",
+    "prettier": "^3.9.8"
+  }
+}

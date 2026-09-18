@@ -1,8 +1,50 @@
-:root { --ink: #142b2b; --muted: #607474; --paper: #f2eee6; --border: #d7d2c8; --coral: #d75543; --teal: #249b83; --gold: #d7a834; --sans: 'Trebuchet MS', 'Segoe UI', sans-serif; --heading: Georgia, serif; --mono: 'Cascadia Code', Consolas, monospace; font: 16px/1.5 var(--sans); color: var(--muted); background: var(--paper); font-synthesis: none; text-rendering: optimizeLegibility; -webkit-font-smoothing: antialiased; }
-* { box-sizing: border-box; }
-body { margin: 0; min-width: 320px; background: radial-gradient(circle at 15% 5%, #fff8df 0, transparent 35%), var(--paper); }
-h1, h2 { color: var(--ink); font-family: var(--heading); font-weight: 500; line-height: 1.08; }
-h1 { font-size: clamp(40px, 6vw, 72px); letter-spacing: 0; }
-h2 { font-size: 28px; }
-code { font: 12px var(--mono); color: var(--ink); background: #e5dfd3; padding: 3px 5px; }
-button:focus-visible { outline: 3px solid var(--gold); outline-offset: 3px; }
+:root {
+  --ink: #142b2b;
+  --muted: #607474;
+  --paper: #f2eee6;
+  --border: #d7d2c8;
+  --coral: #d75543;
+  --teal: #249b83;
+  --gold: #d7a834;
+  --sans: 'Trebuchet MS', 'Segoe UI', sans-serif;
+  --heading: Georgia, serif;
+  --mono: 'Cascadia Code', Consolas, monospace;
+  font: 16px/1.5 var(--sans);
+  color: var(--muted);
+  background: var(--paper);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  margin: 0;
+  min-width: 320px;
+  background: radial-gradient(circle at 15% 5%, #fff8df 0, transparent 35%), var(--paper);
+}
+h1,
+h2 {
+  color: var(--ink);
+  font-family: var(--heading);
+  font-weight: 500;
+  line-height: 1.08;
+}
+h1 {
+  font-size: clamp(40px, 6vw, 72px);
+  letter-spacing: 0;
+}
+h2 {
+  font-size: 28px;
+}
+code {
+  font: 12px var(--mono);
+  color: var(--ink);
+  background: #e5dfd3;
+  padding: 3px 5px;
+}
+button:focus-visible {
+  outline: 3px solid var(--gold);
+  outline-offset: 3px;
+}
