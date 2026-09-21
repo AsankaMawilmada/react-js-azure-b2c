@@ -33,7 +33,7 @@ Use one Microsoft Entra External ID / Azure AD B2C tenant and create two app reg
 ### 2. SPA registration
 
 1. Register a second app named `B2C Reference SPA`.
-2. Add a **Single-page application** redirect URI: `http://localhost:5173`.
+2. Add a **Single-page application** redirect URI: `https://localhost:9010`.
 3. Under **API permissions**, add the API registration's delegated `access_as_user` permission.
 4. Grant consent if your tenant requires administrator consent.
 5. Copy this registration's **Application (client) ID** into the frontend environment file.
@@ -72,7 +72,7 @@ npm install --prefix frontend
 npm run dev --prefix frontend
 ```
 
-Open `http://localhost:5173`. The public card should load without signing in. After sign-in, the protected card acquires a token silently and calls `/api/profile` with the bearer token.
+Open `https://localhost:9010`. The public card should load without signing in. After sign-in, the protected card acquires a token silently and calls `/api/profile` with the bearer token.
 
 The API uses the generated HTTPS development certificate. If the browser rejects it, run `dotnet dev-certs https --trust` once on the development machine.
 

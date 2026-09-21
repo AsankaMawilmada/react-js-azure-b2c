@@ -3,4 +3,10 @@ import { defineConfig } from 'vite'
 
 export default defineConfig({
   plugins: [react()],
+  server: {
+    host: 'localhost',
+    port: 9010,
+    strictPort: true,
+    https: true,
+  },
 })
